@@ -35,7 +35,7 @@ cls
 color 07
 
 choice /c:YN /n /m "? build calculator-tk? (Y/n)"
-if %errorlevel% equ 2 (
+if errorlevel 2 (
     echo Exiting builder...
     timeout /t 1 /NOBREAK >nul
     exit /b
@@ -48,16 +48,16 @@ python builder.py
 if %errorlevel% equ 0 (
     echo Thank you for building our app!
     choice /c:YN /n /m "? open built calculator app? (Y/n)"
-    if %errorlevel% neq 2 (
-        echo Opening...
-        start dist\calculator.exe
-    ) else (
-        echo Exiting...
-        timeout /t 1 /NOBREAK >nul
-    )
+	if errorlevel 2 (
+		echo Exiting...
+		timeout /t 1 /nobreak >nul
+	) else (
+		echo Opening...
+		start dist\calculator.exe
+	)
 ) else (
     echo.
-    echo An error occurred, please report this issue to https://github.com/srpcd/calculator-tk/issues
+    echo An error occurred, please report this issue to https://github.com/asrp-dvr/calculator-tk/issues
 )
 
 echo.

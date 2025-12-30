@@ -109,6 +109,9 @@ class Calculation:
         self.errored = True
     
     def equal(self):
+        if self.root.settings_open and self.root.settings_instance.history_apply_btn['state'] == "normal":
+            if not messagebox.askyesno(title="Warning", message="Hold up! You haven't applied history changes yet. If you want to revert changes, this action may cause data loss. Are you sure you want to continue?"):
+                return
         if self.errored:
             self.start_integer(0)
             self.errored = False
@@ -135,6 +138,7 @@ class Calculation:
                                                                   self.display_var.get(), str(self.variable_array_var))
                         if self.root.settings_open and self.root.settings_instance.get_tab() == 'history':
                             self.root.settings_instance.switch_tab('history')
+                            self.root.settings_instance.history_apply_btn.invoke()
                         break
         except Exception as e:
             print(e.__class__.__name__, e)

@@ -83,7 +83,7 @@ class Build(MakeEnv):
         subprocess.run(['pip', 'install', pyinstaller_dir], cwd=self.build_dir)
 
     def get_src(self):
-        github_qrcode_utility = "https://github.com/srpcd/calculator-tk.git"
+        github_qrcode_utility = "https://github.com/asrp-dvr/calculator-tk.git"
         subprocess.run(['git', 'clone', github_qrcode_utility], cwd=self.build_dir)
         shutil.copytree(f"{self.build_dir}\\calculator-tk\\src", os.path.join(self.build_dir, 'src'))
         shutil.rmtree(f"{self.build_dir}\\calculator-tk", onerror=del_rw)

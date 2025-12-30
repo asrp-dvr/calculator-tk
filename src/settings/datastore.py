@@ -107,7 +107,9 @@ class CalculatorDataStore:
         for new_id, row in enumerate(rows, start=1):
             if new_id != row[0]:
                 self.cur.execute("UPDATE History SET id = ? WHERE id = ?", (new_id, row[0]))
+        self.update_clear_btn(history_btn)
         
+    def update_clear_btn(self, history_btn=None):
         if len(self.get_history_calculations()) == 0 and history_btn is not None:
             history_btn.config(state='disabled')
         elif len(self.get_history_calculations()) != 0 and history_btn is not None:

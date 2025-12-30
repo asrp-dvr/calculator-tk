@@ -15,8 +15,8 @@ from src.utilities import ThemedMenubar, WindowsTitlebar, ThemedMenu, wait_for_f
 # noinspection PyTypeChecker
 class CalculatorSettings(tk.Toplevel, WindowsTitlebar):
     """
-    Calculator - Version v1.0.0
-    Coded and published by SrpCD.
+    Calculator - Version v1.0.1
+    Coded and published by asrp.
     
     Python Version: {}.{}.{} x{}
     Tkinter Version: {}
@@ -47,7 +47,7 @@ class CalculatorSettings(tk.Toplevel, WindowsTitlebar):
         self.iconbitmap(os.path.join(getattr(sys, '_MEIPASS', 'images'), 'calc.ico'))
         self.config(bg="#111111" if self.color != 'light' else '#F0F0F0')
         
-        self.github_url = "https://github.com/srpcd/calculator-tk"
+        self.github_url = "https://github.com/asrp-dvr/calculator-tk"
         
         self.history_selected_frames = []
         self.history_visible_selected_frames = []
@@ -766,7 +766,8 @@ class CalculatorSettings(tk.Toplevel, WindowsTitlebar):
                  self.history_remove_btn.config(state=tk.NORMAL)) if len(self.history_selected_frames) == 1 else (
                     self.history_open_btn.config(state=tk.DISABLED),
                     self.history_remove_btn.config(
-                        state=tk.NORMAL if len(self.history_selected_frames) != 0 else tk.DISABLED))))
+                        state=tk.NORMAL if len(self.history_selected_frames) != 0 else tk.DISABLED)),
+                self.switch_tab("history")))
         self.history_old_calculations[-1].remove.pack(side='left', padx=5)
         self.history_old_calculations[-1].operation_text = tk.Label(
             self.history_old_calculations[-1], text=obj[2][:11].rstrip() if len(obj[2].rstrip()) <= 11
@@ -842,6 +843,7 @@ class CalculatorSettings(tk.Toplevel, WindowsTitlebar):
                 
             self.history_frame.pack(expand=True, fill='both')
             self.about_frame.pack_forget()
+            self.master.database_history.update_clear_btn(self.history_clear_btn)
             
             self.open_tab = 'history'
         elif tab == 'about':

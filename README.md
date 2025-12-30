@@ -7,6 +7,13 @@
 <br>
 
 # Announcements
+   ### Version v1.0.1
+   - Bug fixes:<br><br>
+     - Fixed a bug where if you want to open the calculator after being built, it would always open at the end.
+     - Fixed a bug where the builder script couldn't run at all due to pyinstaller not being in the requirements.
+     - Fixed a bug where the clear button was enabled when the list was cleared from deleting a single item.<br><br>
+   - Added a warning where if you have unsaved changes to the history and you do a calculation that it automatically saves.<br>
+   
    ### Version v1.0.0
    - Added basic operations and numbers.<br><br>
      - Operations: Plus(+), Minus(-), Multiply(x), Divide(÷), Modulus(%), FloorDivision(//), Power(^)
@@ -38,8 +45,8 @@
        - Button for applying your settings<br><br>
      - About Window:<br><br>
         - Displays the following:<br><br>
-            Calculator - Version v1.0.0<br>
-            Coded and published by SrpCD.<br><br>
+            Calculator - Version (Project Version)<br>
+            Coded and published by asrp.<br><br>
             Python Version: (Python Version) x(Archiecture)<br>
             Tkinter Version: (Tkinter Version)
 <br>
